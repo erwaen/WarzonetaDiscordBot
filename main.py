@@ -4,12 +4,14 @@ import random
 import time
 
 from discord.ext import commands
+
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-bot = commands.Bot(command_prefix='!')
+
+bot = commands.Bot(command_prefix="!")
 
 
 
@@ -42,7 +44,10 @@ def printLobby():
     return response
 
 
-@bot.command(name='enter')
+@bot.command(
+    name='enter',
+    brief="Te pone en la lista del Lobby"
+)
 async def enterLobby(ctx):
     verificarTiempo()
     response = ""
@@ -65,7 +70,10 @@ async def enterLobby(ctx):
     await ctx.send(response)
 
 
-@bot.command(name='lobby')
+@bot.command(
+    name='lobby',
+    brief="Visualizar los usuarios actuales del lobby"
+)
 async def seeLobby(ctx):
     verificarTiempo()
     response = ""
@@ -76,7 +84,10 @@ async def seeLobby(ctx):
 
     await ctx.send(response)
 
-@bot.command(name='removeme')
+@bot.command(
+    name='removeme',
+    brief="Te elimina de la lista del lobby"
+)
 async def removeme(ctx):
     username = ctx.author.name
     for user in lobbyList:
@@ -87,7 +98,17 @@ async def removeme(ctx):
             
     
     
-    
+# @bot.command(name='help')
+# async def helpCommand(ctx):
+#     response ="hola"
+#     # response = """ =============COMANDOS===================
 
+#     #     !enter -> Te agrega a la lista para el lobby
+
+#     #     !removeme -> Te quita de la lista
+
+#     #     !lobby -> para visualizar el lobby actual """
+
+#     await ctx.send(response)
 
 bot.run(TOKEN)
