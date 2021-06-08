@@ -95,7 +95,38 @@ async def removeme(ctx):
             lobbyList.remove(user)
             await ctx.send(printLobby())
             break
-            
+
+pitos = ["pitooo", "pito doble", "pito triple","pito tacaño 💲🧔", "pito meteoricooo ☄", "pito cosmicoo 🌌", "pito galaaacticoo 💫" , "pito warzonetaaaa ☠🔫",]
+@bot.command(
+    name='pito',
+    brief="retorna un pito senhor del bigohte"
+)
+async def pitoo(ctx):
+    pito = random.choice(pitos)
+    await ctx.send(pito)
+    
+@bot.command(
+    name='mutealert',
+    brief="!mutealert <nombre>,  para avisarle que esta muteado"
+)
+async def pitoo(ctx, nombre=""):
+    if nombre == "":
+        response = "error, Debes poner un nombre, ej: '!mutealert erik'"
+    else: 
+        response = f"""
+            ========================================================
+                    {nombre.upper()}, ESTAS MUTEADO !!!!!!!!!!!!!!!!!!!!!
+            ========================================================
+        """
+    await ctx.send(response)
+    
+
+@bot.command()
+async def clear(ctx, amount=1):
+    await ctx.channel.purge(limit=amount)
+         
+    
+                    
     
     
 # @bot.command(name='help')
